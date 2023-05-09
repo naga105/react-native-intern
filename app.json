@@ -1,4 +1,10 @@
 {
   "name": "capstone",
-  "displayName": "capstone"
+  "displayName": "capstone",
+  "sourceExts": [
+    "js",
+    "jsx",
+    "tsx",
+    "css"
+  ]
 }
