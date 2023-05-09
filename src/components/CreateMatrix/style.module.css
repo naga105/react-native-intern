@@ -1,0 +1,66 @@
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.headerBox {
+    border-left: 1px rgb(233, 140, 27) solid;
+}
+
+.breakLine {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.header {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 29px;
+    color: #e98c1b;
+    font-weight: bold;
+}
+
+.inputArea {
+    margin-top: 15px;
+}
+
+.inputLabel {
+    font-size: 18px;
+    color: black;
+}
+
+.input {
+    border: 1px solid rgba(183, 179, 179, 0.991);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inputIDR {
+    flex-direction: row;
+    border: 1px solid rgba(183, 179, 179, 0.991);
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+
+    margin-top: 30px;
+    width: 350px;
+    display: flex;
+    gap: 1rem;
+}
+
+.inputField {
+    margin-left: 15px;
+}
+
+.footer {
+    height: 100px;
+    width: 100%;
+    background-color: #d8d2d2;
+}

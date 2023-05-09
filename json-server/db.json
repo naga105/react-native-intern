@@ -1,0 +1,39 @@
+{
+    "default": [],
+    "TransferOnline": [
+        {
+            "id": 0,
+            "matrixName": "matrix-1",
+            "RLoP": {
+                "MaxIDR": 0,
+                "MinIDR": 50000
+            },
+            "NoA": 1,
+            "Approver": [
+                {
+                    "ApproverId": 1,
+                    "ApproverName": "GroupMG1,GroupMG2"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "matrixName": "matrix-2",
+            "RLoP": {
+                "MaxIDR": 50000,
+                "MinIDR": 100000
+            },
+            "NoA": 2,
+            "Approver": [
+                {
+                    "ApproverId": 1,
+                    "ApproverName": "GroupMG1,GroupMG2"
+                },
+                {
+                    "ApproverId": 2,
+                    "ApproverName": "GroupFI1,GroupFI2,GroupCross"
+                }
+            ]
+        }
+    ]
+}

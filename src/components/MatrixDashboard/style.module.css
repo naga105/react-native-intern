@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  align-items: center;
+  background-color: #e98c1b;
+}
+
+.viewBox {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 1px solid white;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: white;
+}
+
+.headerBox {
+  border-left: 1px rgb(233, 140, 27) solid;
+}
+
+.breakLine {
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.header {
+  width: 100%;
+  margin-top: 15px;
+  font-size: 29px;
+  color: #e98c1b;
+  font-weight: bold;
+}
+
+.buttons {
+  margin-top: 30px;
+  width: 350px;
+  display: flex;
+  gap: 1rem;
+}
+
+.buttonColor {
+}
