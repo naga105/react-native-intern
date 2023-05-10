@@ -1,31 +1,49 @@
-import {React, useState, useCallback} from 'react';
-import {Picker} from '@react-native-picker/picker';
+import {React, useState, useCallback, useMemo, useEffect} from 'react';
 import {Text, View, TextInput, Button, ScrollView} from 'react-native';
+import {SelectList} from 'react-native-dropdown-select-list';
 import style from './style.module.css';
 const defaultInput = {
-  matrixName: '',
-  minRoa: '',
-  maxRoa: '',
-  NoA: '',
+  matrixName: null,
+  minRoa: null,
+  maxRoa: null,
+  noA: null,
 };
 const CreateMatrix = ({navigation}) => {
-  const [selectedValue, setSelectedValue] = useState();
+  const [selectedValue, setSelectedValue] = useState('');
   const [matrix, setMatrix] = useState({
-    ...defaultInput,
+    matrixName: null,
+    minRoa: null,
+    maxRoa: null,
+    noA: null,
   });
-  let isDisable = JSON.stringify(matrix) === JSON.stringify(defaultInput);
-
+  let isDisable = Object.keys(matrix).every(key => {
+    return matrix[key] === null || '';
+  });
+  const isInformationFilled = useMemo(() => {
+    const isAllFilled = Object.keys(matrix).every(key => {
+      return matrix[key] !== null || '';
+    });
+    return isAllFilled && selectedValue !== '';
+  }, [matrix, selectedValue]);
   const onUpdate = useCallback(
     (inputname, text) => {
-      setMatrix((matrix.inputname = text));
+      setMatrix({...matrix, [inputname]: text});
     },
     [matrix],
   );
   const resetHandler = () => {
     setMatrix({...defaultInput});
+    setSelectedValue(null);
   };
+  // useEffect(() => {
+  //   const isAllFilled = Object.keys(matrix).every(key => {
+  //     return matrix[key] !== null || '';
+  //   });
+  //   console.log(isAllFilled);
+  // }, [matrix]);
   const onClickHandler = () => {
-    return 1;
+    console.log(isInformationFilled);
+    console.log(matrix);
   };
   return (
     <ScrollView>
@@ -49,19 +67,18 @@ const CreateMatrix = ({navigation}) => {
             </View>
             <View>
               <Text style={style.inputLabel}>Feature</Text>
-              <View style={style.input}>
-                <Picker
-                  selectedValue={selectedValue}
-                  onValueChange={(itemValue, itemIndex) =>
-                    setSelectedValue(itemValue)
-                  }>
-                  <Picker.Item label="Default" value="Default" />
-                  <Picker.Item
-                    label="Transfer Online"
-                    value="Transfer Online"
-                  />
-                </Picker>
-              </View>
+              <SelectList
+                data={[
+                  {key: 'Default', value: 'default'},
+                  {key: 'TransferOnline', value: 'Transfer Online'},
+                ]}
+                setSelected={(key, value) => {
+                  console.log(selectedValue);
+                  setSelectedValue(key);
+                }}
+                boxStyles={{borderRadius: 20, borderColor: '#b7b3b3'}}
+                placeholder="Select Feature"
+              />
             </View>
             <View>
               <Text style={style.inputLabel}>Range of Approval (Minimum)</Text>
@@ -110,8 +127,8 @@ const CreateMatrix = ({navigation}) => {
                 <TextInput
                   style={style.inputField}
                   onChange={onUpdate}
-                  onChangeText={text => onUpdate('NoA', text)}
-                  value={matrix.NoA}
+                  onChangeText={text => onUpdate('noA', text)}
+                  value={matrix.noA}
                   keyboardType="numeric"
                   placeholder="Number of Approval"
                 />
