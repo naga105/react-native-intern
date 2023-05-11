@@ -1,6 +1,9 @@
-import {React, useState, useCallback, useMemo, useEffect} from 'react';
+import {React, useState, useCallback, useMemo, useContext} from 'react';
 import {Text, View, TextInput, Button, ScrollView} from 'react-native';
 import {SelectList} from 'react-native-dropdown-select-list';
+import {addNewelement} from '../../../fakedata';
+import {datalist} from '../../../fakedata';
+import ListContext from '../../utils/ListContext';
 import style from './style.module.css';
 const defaultInput = {
   matrixName: null,
@@ -9,6 +12,7 @@ const defaultInput = {
   noA: null,
 };
 const CreateMatrix = ({navigation}) => {
+  const createFunction = useContext(ListContext);
   const [selectedValue, setSelectedValue] = useState('');
   const [matrix, setMatrix] = useState({
     matrixName: null,
@@ -35,15 +39,18 @@ const CreateMatrix = ({navigation}) => {
     setMatrix({...defaultInput});
     setSelectedValue(null);
   };
-  // useEffect(() => {
-  //   const isAllFilled = Object.keys(matrix).every(key => {
-  //     return matrix[key] !== null || '';
-  //   });
-  //   console.log(isAllFilled);
-  // }, [matrix]);
   const onClickHandler = () => {
     console.log(isInformationFilled);
-    console.log(matrix);
+    console.log(createFunction.data[selectedValue].length);
+    const obj = {
+      id: createFunction.data[selectedValue].length + 1,
+      matrixName: matrix.matrixName,
+      MinIDR: matrix.minRoa,
+      MaxIDR: matrix.maxRoa,
+      NoA: matrix.noA,
+    };
+    createFunction.new(selectedValue, obj);
+    console.log('run');
   };
   return (
     <ScrollView>
@@ -76,7 +83,11 @@ const CreateMatrix = ({navigation}) => {
                   console.log(selectedValue);
                   setSelectedValue(key);
                 }}
-                boxStyles={{borderRadius: 20, borderColor: '#b7b3b3'}}
+                boxStyles={{
+                  borderRadius: 20,
+                  borderColor: '#b7b3b3',
+                  marginBottom: 0,
+                }}
                 placeholder="Select Feature"
               />
             </View>

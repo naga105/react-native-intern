@@ -8,13 +8,14 @@ const defaultInput = {
   maxRoa: null,
   noA: null,
 };
-const UpdateMatrix = ({navigation}) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const UpdateMatrix = ({route, navigation}) => {
+  const {Matrix} = route.params;
+  const [selectedValue, setSelectedValue] = useState();
   const [matrix, setMatrix] = useState({
-    matrixName: null,
-    minRoa: null,
-    maxRoa: null,
-    noA: null,
+    matrixName: Matrix.matrixName,
+    minRoa: Matrix.MinIDR,
+    maxRoa: Matrix.MaxIDR,
+    noA: Matrix.NoA,
   });
   const isInformationFilled = useMemo(() => {
     const isAllFilled = Object.keys(matrix).every(key => {
@@ -53,6 +54,7 @@ const UpdateMatrix = ({navigation}) => {
                 style={style.inputField}
                 onChangeText={text => onUpdate('matrixName', text)}
                 value={matrix.matrixName}
+                defaultValue={Matrix.matrixName}
                 placeholder="Input Matrix Name"
               />
             </View>
@@ -88,6 +90,7 @@ const UpdateMatrix = ({navigation}) => {
                   value={matrix.minRoa}
                   placeholder="Input Text Here"
                   keyboardType="numeric"
+                  defaultValue={Matrix.MinIDR}
                 />
               </View>
             </View>
@@ -108,6 +111,7 @@ const UpdateMatrix = ({navigation}) => {
                   value={matrix.maxRoa}
                   placeholder="Input Text Here"
                   keyboardType="numeric"
+                  defaultValue={Matrix.MaxIDR}
                 />
               </View>
             </View>
@@ -122,6 +126,7 @@ const UpdateMatrix = ({navigation}) => {
                   value={matrix.noA}
                   keyboardType="numeric"
                   placeholder="Number of Approval"
+                  defaultValue={Matrix.NoA}
                 />
               </View>
             </View>

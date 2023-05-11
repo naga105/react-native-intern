@@ -16,12 +16,31 @@
 
 .headerBox {
   border-left: 1px rgb(233, 140, 27) solid;
+  align-self: flex-end;
+  margin-right: 20px;
+  margin-top: 30px;
 }
-
-.breakLine {
+.addButton {
+  background-color: #171c8f;
   flex-direction: row;
+  padding: 5px;
+  border-radius: 10px;
+  display: flex;
+}
+.crossButton {
+  margin: 5px;
+  display: flex;
+  flex-direction: row;
+  width: 30px;
+  background-color: white;
+  border-radius: 100px;
+  justify-content: center;
+}
+.breakLine {
+  flex-direction: row;  
   align-items: center;
   margin-top: 20px;
+  width: 90%;
 }
 
 .header {
