@@ -14,15 +14,43 @@ function App() {
     setDataList({
       data: datalist,
       new: createNew,
-      update: updateState,
+      updating: updateState,
     });
     // console.log(dataList);
   };
-  const updateState = () => {};
+  const updateState = (type, updateElement) => {
+    console.log('============');
+    console.log(updateElement);
+    // let newdatalist = datalist[type].map(e => {
+    //   e.id === updateElement.id
+    //     ? {
+    //         ...e,
+    //         matrixName: updateElement.matrixName,
+    //         MinIDR: updateElement.MinIDR,
+    //         MaxIDR: updateElement.MaxIDR,
+    //         NoA: updateElement.NoA,
+    //       }
+    //     : e;
+    // });
+    const elementIndex = datalist[type].findIndex(
+      e => e.id === updateElement.id,
+    );
+    console.log(elementIndex);
+    datalist[type][elementIndex].matrixName = updateElement.matrixName;
+    datalist[type][elementIndex].MinIDR = updateElement.MinIDR;
+    datalist[type][elementIndex].MaxIDR = updateElement.MaxIDR;
+    datalist[type][elementIndex].NoA = updateElement.NoA;
+    console.log(datalist[type][elementIndex]);
+    setDataList({
+      data: datalist,
+      new: createNew,
+      updating: updateState,
+    });
+  };
   const [dataList, setDataList] = useState({
     data: datalist,
     new: createNew,
-    update: updateState,
+    updating: updateState,
   });
   return (
     <ListContext.Provider value={dataList}>

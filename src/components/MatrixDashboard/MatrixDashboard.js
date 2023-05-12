@@ -71,7 +71,11 @@ const MatrixDashboard = ({navigation}) => {
           </View>
         </View>
         <View>
-          <DropdownList datalist={datalist} navigation={navigation} />
+          <DropdownList
+            type={'TransferOnline'}
+            datalist={datalist}
+            navigation={navigation}
+          />
         </View>
       </View>
     </View>

@@ -50,7 +50,7 @@ const CreateMatrix = ({navigation}) => {
       NoA: matrix.noA,
     };
     createFunction.new(selectedValue, obj);
-    console.log('run');
+    navigation.goBack();
   };
   return (
     <ScrollView>
@@ -76,7 +76,7 @@ const CreateMatrix = ({navigation}) => {
               <Text style={style.inputLabel}>Feature</Text>
               <SelectList
                 data={[
-                  {key: 'Default', value: 'default'},
+                  {key: 'default', value: 'Default'},
                   {key: 'TransferOnline', value: 'Transfer Online'},
                 ]}
                 setSelected={(key, value) => {
