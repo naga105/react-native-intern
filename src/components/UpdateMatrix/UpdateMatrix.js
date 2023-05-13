@@ -31,9 +31,9 @@ const UpdateMatrix = ({route, navigation}) => {
     },
     [matrix],
   );
-  const resetHandler = () => {
-    setMatrix({...defaultInput});
-    setSelectedValue(null);
+  const deleteHandler = () => {
+    createFunction.delete(type, Matrix);
+    navigation.goBack();
   };
   const onClickHandler = () => {
     console.log(isInformationFilled);
@@ -152,7 +152,7 @@ const UpdateMatrix = ({route, navigation}) => {
                 title="UPDATE TO: LIST"
                 onPress={onClickHandler}
               />
-              <Button color="#e98c1b" title="DELETE" onPress={resetHandler} />
+              <Button color="#e98c1b" title="DELETE" onPress={deleteHandler} />
             </View>
           </View>
         </View>

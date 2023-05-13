@@ -15,23 +15,13 @@ function App() {
       data: datalist,
       new: createNew,
       updating: updateState,
+      delete: deleteState,
     });
     // console.log(dataList);
   };
   const updateState = (type, updateElement) => {
     console.log('============');
     console.log(updateElement);
-    // let newdatalist = datalist[type].map(e => {
-    //   e.id === updateElement.id
-    //     ? {
-    //         ...e,
-    //         matrixName: updateElement.matrixName,
-    //         MinIDR: updateElement.MinIDR,
-    //         MaxIDR: updateElement.MaxIDR,
-    //         NoA: updateElement.NoA,
-    //       }
-    //     : e;
-    // });
     const elementIndex = datalist[type].findIndex(
       e => e.id === updateElement.id,
     );
@@ -45,12 +35,28 @@ function App() {
       data: datalist,
       new: createNew,
       updating: updateState,
+      delete: deleteState,
     });
+  };
+  const deleteState = (type, deleteElement) => {
+    const elementIndex = datalist[type].findIndex(
+      e => e.id === deleteElement.id,
+    );
+    datalist[type].splice(elementIndex, 1);
+    console.log(datalist);
+    setDataList({
+      data: datalist,
+      new: createNew,
+      updating: updateState,
+      delete: deleteState,
+    });
+    console.log('deleted');
   };
   const [dataList, setDataList] = useState({
     data: datalist,
     new: createNew,
     updating: updateState,
+    delete: deleteState,
   });
   return (
     <ListContext.Provider value={dataList}>

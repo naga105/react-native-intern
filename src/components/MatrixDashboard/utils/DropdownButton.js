@@ -12,9 +12,6 @@ const DropdownButton = ({text, pressed}) => {
     activeOpacity: 1,
     style: pressed ? style.catgTextPress : style.catgTextNormal,
   };
-  useEffect(() => {
-    pressed ? setVertcolor('#cbe642') : setVertcolor('#d7d7d9');
-  }, [vertcolor]);
   return (
     <View {...touchProps}>
       <View style={style.buttonText}>
