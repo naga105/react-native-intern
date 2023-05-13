@@ -29,3 +29,40 @@
   align-items: center;
   width: 95%;
 }
+
+.btnPress {
+  margin-top: 20px;
+  flex-direction: row;
+  border: 1px solid #cbe642;
+  border-radius: 20px;
+  justify-content: center;
+  padding: 18px;
+  width: 350px;
+  color: #cbe642;
+}
+
+.btnNormal {
+  margin-top: 20px;
+  flex-direction: row;
+  border: 1px solid #d7d7d9;
+  border-radius: 20px;
+  justify-content: center;
+  padding: 18px;
+  width: 350px;
+  color: #d7d7d9;
+}
+.buttonText {
+  display: flex;
+  flex-direction: row;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+.catgTextPress {
+  font-size: 18px;
+  color: #cbe642;
+}
+.catgTextNormal {
+  font-size: 18px;
+  color: #2e2e2ed7;
+}

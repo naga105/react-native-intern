@@ -12,6 +12,7 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-color: white;
+  padding-bottom: 30px;
 }
 
 .headerBox {
@@ -37,7 +38,7 @@
   justify-content: center;
 }
 .breakLine {
-  flex-direction: row;  
+  flex-direction: row;
   align-items: center;
   margin-top: 20px;
   width: 90%;

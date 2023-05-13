@@ -45,6 +45,7 @@ const UpdateMatrix = ({route, navigation}) => {
       NoA: matrix.noA,
     };
     createFunction.updating(selectedValue, obj);
+    navigation.goBack();
   };
   return (
     <ScrollView>
